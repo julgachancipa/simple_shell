@@ -11,7 +11,7 @@ char *shell_read(char **path_dir)
 	int flag;
 
 	flag = getline(&line, &sz, stdin);
-	if (flag == -1)
+	if (flag == EOF)
 	{
 		free(line);
 		free(path_dir);
