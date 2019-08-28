@@ -13,6 +13,7 @@ int shell_process(char **grid)
 	if (child == -1)
 	{
 		perror("lsh");
+		exit(EXIT_FAILURE);
 	}
 	else if (child == 0)
 	{

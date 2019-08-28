@@ -23,13 +23,13 @@ void shell_loop(char **env)
 		status = shell_status(grid, path_dir, env);
 		free(line);
 		free(grid);
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 2);
 		if (status == -1)
 		{
 			free(path_dir);
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 	} while (status);
 	free(path_dir);
 }

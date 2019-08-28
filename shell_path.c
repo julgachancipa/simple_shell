@@ -39,7 +39,7 @@ char **grid_cpy(char *full_file, char **grid)
  * @new_grid: grid with the new [0] parameter
  * Return: 1 on success or exit in errors
  */
-int path_exe(char **new_grid)
+int path_exe(char **new_grid, char **env)
 {
 	int status = 1;
 	pid_t child;
@@ -51,7 +51,7 @@ int path_exe(char **new_grid)
 	}
 	else if (child == 0)
 	{
-		if (execve(new_grid[0], new_grid, NULL) == -1)
+		if (execve(new_grid[0], new_grid, env) == -1)
 		{
 			perror("lsh");
 			exit(EXIT_FAILURE);
@@ -69,7 +69,7 @@ int path_exe(char **new_grid)
  * @path_dir: PATH dirs.
  * Return: 1 success or 0 if not
  */
-int shell_path(char **grid, char **path_dir)
+int shell_path(char **grid, char **path_dir, char **env)
 {
 	char *full_file;
 	char **new_grid;
@@ -86,7 +86,7 @@ int shell_path(char **grid, char **path_dir)
 		if (stat(full_file, &st) == 0)
 		{
 			new_grid = grid_cpy(full_file, grid);
-			path_exe(new_grid);
+			path_exe(new_grid, env);
 			free(full_file);
 			j = 0;
 			if (new_grid[j])
