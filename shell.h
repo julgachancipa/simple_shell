@@ -2,6 +2,7 @@
 #define SH_H
 /*variables*/
 #define BUF_SZ 1024
+extern char **environ;
 /*libraries*/
 #include <stdio.h>
 #include <unistd.h>
@@ -29,5 +30,5 @@ char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
 int _strlen(char *str1);
-int shell_builtins(char **grid, char **env);
+int shell_builtins(char **grid);
 #endif
