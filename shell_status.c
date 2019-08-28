@@ -4,9 +4,10 @@
  * @grid: pointer of tokens
  * @path_dir: grid of dirs in the path
  * @env: enviroment vars.
+ * @line: input line
  * Return: status
  */
-int shell_status(char **grid, char **path_dir, char **env)
+int shell_status(char **grid, char **path_dir, char **env, char *line)
 {
 	int flag = 0;
 
@@ -21,5 +22,5 @@ int shell_status(char **grid, char **path_dir, char **env)
 	if ((grid[0][0] != '/') && (shell_path(grid, path_dir, env)))
 		return (1);
 	/*exe commands or no valid*/
-	return (shell_process(grid, env));
+	return (shell_process(grid, env, line, path_dir));
 }

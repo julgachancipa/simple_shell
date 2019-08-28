@@ -81,7 +81,7 @@ int shell_path(char **grid, char **path_dir, char **env)
 	/*find the file in the directory*/
 	for (i = 0; path_dir[i]; i++)
 	{
-		full_file = malloc(20 * sizeof(char));
+		full_file = malloc(1024 * sizeof(char));
 		_strcpy(full_file, path_dir[i]);
 		_strcat(full_file, "/");
 		_strcat(full_file, grid[0]);

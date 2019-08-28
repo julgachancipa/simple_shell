@@ -11,7 +11,6 @@ void shell_loop(char **env)
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
-
 	/*get the path content*/
 	path_con = _getenv(env, "PATH");
 	/*token. PATH*/
@@ -21,7 +20,7 @@ void shell_loop(char **env)
 	do {
 		line = shell_read(path_dir);
 		grid = shell_token(line, delim);
-		status = shell_status(grid, path_dir, env);
+		status = shell_status(grid, path_dir, env, line);
 		free(line);
 		free(grid);
 		if (status == -1)
