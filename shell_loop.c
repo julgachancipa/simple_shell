@@ -9,6 +9,8 @@ void shell_loop(char **env)
 	char *line, *delim, *path_con, **grid, **path_dir;
 	int status;
 
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "$ ", 2);
 	/*get the path content*/
 	path_con = _getenv(env, "PATH");
 	/*token. PATH*/
@@ -21,6 +23,8 @@ void shell_loop(char **env)
 		status = shell_status(grid, path_dir, env);
 		free(line);
 		free(grid);
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 		if (status == -1)
 		{
 			free(path_dir);
