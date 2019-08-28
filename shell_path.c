@@ -37,6 +37,7 @@ char **grid_cpy(char *full_file, char **grid)
 /**
  * path_exe - create a child process and wait until it ends.
  * @new_grid: grid with the new [0] parameter
+ * @env: env. vars
  * Return: 1 on success or exit in errors
  */
 int path_exe(char **new_grid, char **env)
@@ -67,6 +68,7 @@ int path_exe(char **new_grid, char **env)
  * shell_path - look if the token is a file in the path dir.
  * @grid: tokenized line.
  * @path_dir: PATH dirs.
+ * @env: env vars
  * Return: 1 success or 0 if not
  */
 int shell_path(char **grid, char **path_dir, char **env)

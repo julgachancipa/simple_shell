@@ -15,7 +15,7 @@ char *shell_read(char **path_dir)
 	{
 		free(line);
 		free(path_dir);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	line[flag - 1] = '\0';
 	return (line);

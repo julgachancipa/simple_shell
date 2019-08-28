@@ -21,5 +21,5 @@ int shell_status(char **grid, char **path_dir, char **env)
 	if ((grid[0][0] != '/') && (shell_path(grid, path_dir, env)))
 		return (1);
 	/*exe commands or no valid*/
-	return (shell_process(grid));
+	return (shell_process(grid, env));
 }
