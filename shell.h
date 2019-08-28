@@ -24,7 +24,7 @@ void _puts_grid(char **grid);
 int shell_process(char **grid);
 int shell_status(char **grid, char **path_dir, char **env);
 char *_getenv(char **env, const char *name);
-int shell_path(char **grid, char **path_dir);
+int shell_path(char **grid, char **path_dir, char **env);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
