@@ -1,0 +1,113 @@
+.TH hsh 1 "August 25, 2019" "1.0" "hsh Commands Manual"
+
+.SH NAME
+
+.B simple_shell
+- command line interpreter of shell
+
+
+.SH SYNOPSIS
+
+.B  ./hsh
+.I [command]
+
+.SH DESCRIPTION
+
+.B simple_shell
+- is a simple replica of the standard command interpreter shell, written by Ken Thompson in 1971. simple_shell is desgined to run on the linux environment.
+
+.SH OVERVIEW
+
+The simple shell is a program that reads lines from the terminal and executes commands.
+
+.SH COMPILATION
+
+Compile simple_shell with the GNU Compiler
+.P
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.P
+.RE
+.SH EXECUTE
+simple_shell can be run in interactive mode by entering the below command on the command
+.P
+.RS
+.B $ ./hsh
+.P
+.RE
+simple_shell can be executed in non-interactive mode through the following script
+.P
+.RS
+.B echo 'pwd' | ./hsh
+
+.SH COMMAND EXAMPLE
+.PP
+.BR $
+.br
+.BR $
+ls -la
+.br
+total 96
+.br
+drwxrwxr-x 2 vagrant vagrant  4096 Aug 28 02:46 .
+.br
+drwxrwxr-x 5 vagrant vagrant  4096 Aug 27 21:00 ..
+.br
+-rw-rw-r-- 1 vagrant vagrant  1257 Aug 27 16:11 _getenv.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   266 Aug 27 03:02 main.c
+.br-rw-rw-r-- 1 vagrant vagrant   246 Aug 27 03:02 _putchar.c
+-rw-rw-r-- 1 vagrant vagrant   218 Aug 27 03:02 _puts.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   221 Aug 27 04:27 puts_grid.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   686 Aug 27 03:02 _realloc.c
+.br
+-rwxrwxr-x 1 vagrant vagrant 14594 Aug 28 00:36 shell
+.br
+-rw-rw-r-- 1 vagrant vagrant   333 Aug 27 20:20 shell_buitlins.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   915 Aug 27 20:21 shell.h
+.br
+-rw-rw-r-- 1 vagrant vagrant   631 Aug 27 20:08 shell_loop.c
+.br
+-rw-rw-r-- 1 vagrant vagrant  1848 Aug 28 00:33 shell_path.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   469 Aug 27 16:22 shell_process.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   318 Aug 27 19:38 shell_read.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   543 Aug 28 02:46 shell_status.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   687 Aug 27 21:14 shell_token.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   328 Aug 27 03:02 _strcat.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   305 Aug 27 19:53 _strcmp.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   247 Aug 27 20:52 _strcpy.c
+.br
+-rw-rw-r-- 1 vagrant vagrant   547 Aug 27 05:07 _strdup.c
+.br
+.BR $
+.SH BUILTINS
+
+This section lists the builtin commands:
+
+.B env
+\- Prints the environment variables to stdout
+
+.B exit
+\- Terminate the shell process
+
+.SH BUGS
+No known bugs, if you find a bug contact 836@holbertonschool.com or 925@holbertonschool.com.
+
+.SH SEE ALSO
+man sh
+
+.SH AUTHOR
+
+Diego Ramos <DiegoRamos.mt@gmail.com.com>
+
+Emma Gachancipa <julianaga01@gmail.com>
