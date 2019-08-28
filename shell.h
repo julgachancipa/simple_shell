@@ -21,7 +21,7 @@ char *shell_read(char **path_read);
 char **shell_token(char *line, char *delim);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void _puts_grid(char **grid);
-int shell_process(char **grid);
+int shell_process(char **grid, char **env);
 int shell_status(char **grid, char **path_dir, char **env);
 char *_getenv(char **env, const char *name);
 int shell_path(char **grid, char **path_dir, char **env);
