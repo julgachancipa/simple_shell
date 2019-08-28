@@ -42,10 +42,10 @@ File | Description
 
 ## Installation
    - Clone this repository: `git clone "https://github.com/julgachancipa/simple_shell.git"`
-   
+
 ## Compile
    - `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
-   
+
 ## Execute
    - Run the shell in interactive mode: `./hsh`
    - Or run the shell in non-interactive mode: `echo "pwd" | ./hsh`
