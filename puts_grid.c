@@ -8,9 +8,9 @@ void puts_grid(char **grid)
 {
 	int i;
 
-	for (i = 0; grid[i]; i++)
+	for (i = 0; grid[i] != NULL; i++)
 	{
-		_puts(grid[i]);
-		_puts("\n");
+		write(STDOUT_FILENO, grid[i], _strlen(grid[i]));
+		write(STDOUT_FILENO, "\n", 1);
 	}
 }
