@@ -28,5 +28,6 @@ int shell_path(char **grid, char **path_dir, char **env);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
+int _strlen(char *str1);
 int shell_builtins(char **grid, char **env);
 #endif
