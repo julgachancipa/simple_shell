@@ -11,6 +11,7 @@ void shell_loop(char **env)
 
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
+
 	/*get the path content*/
 	path_con = _getenv(env, "PATH");
 	/*token. PATH*/
