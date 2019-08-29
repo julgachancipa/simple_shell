@@ -15,7 +15,7 @@ int shell_status(char **grid, char **path_dir, char **env, char *line, int *exit
 	if (grid[0] == NULL)
 		return (1);
 	/*builtins*/
-	flag = shell_builtins(grid, env);
+	flag = shell_builtins(grid);
 	if (flag)
 		return (flag);
 	/*PATH commands*/
