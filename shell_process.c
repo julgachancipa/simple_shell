@@ -28,6 +28,7 @@ int shell_process(char **grd, char **env, char *line, char **path_dir, int *e)
 			free(line);
 			free(grd);
 			free(path_dir);
+			free(e);
 			exit(127);
 		}
 	}
