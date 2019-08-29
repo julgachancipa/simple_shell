@@ -25,7 +25,7 @@ void shell_loop(char **env)
 	path_dir = shell_token(path_con, delim);
 	delim = " \t\r\a\n";
 	do {
-		line = shell_read(path_dir);
+		line = shell_read(path_dir, exit_status);
 		grid = shell_token(line, delim);
 		status = shell_status(grid, path_dir, env, line, exit_status);
 		free(line);
