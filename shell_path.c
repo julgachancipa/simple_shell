@@ -37,10 +37,12 @@ char **grid_cpy(char *full_file, char **grid)
 /**
  * path_exe - create a child process and wait until it ends.
  * @new_grid: grid with the new [0] parameter
- * @env: env. vars
- * Return: 1 on success or exit in errors
+ * @env: env. vars * Return: 1 on success or exit in errors
+ * @ex: exit number
+ *
+ * Return: 1 success
  */
-int path_exe(char **new_grid, char **env, int *exit_status)
+int path_exe(char **new_grid, char **env, int *ex)
 {
 	int status;
 	pid_t child;
@@ -63,7 +65,7 @@ int path_exe(char **new_grid, char **env, int *exit_status)
 	{
 		waitpid(child, &status, WUNTRACED);
 		if (WIFEXITED(status))
-			*exit_status = WEXITSTATUS(status);
+			*ex = WEXITSTATUS(status);
 	}
 	return (1);
 }
@@ -72,9 +74,10 @@ int path_exe(char **new_grid, char **env, int *exit_status)
  * @grid: tokenized line.
  * @path_dir: PATH dirs.
  * @env: env vars
+ * @ex: exit number
  * Return: 1 success or 0 if not
  */
-int shell_path(char **grid, char **path_dir, char **env, int *exit_status)
+int shell_path(char **grid, char **path_dir, char **env, int *ex)
 {
 	char *full_file;
 	char **new_grid;

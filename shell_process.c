@@ -5,9 +5,11 @@
  * @env: env vars
  * @line: input line
  * @path_dir: path dirs.
+ * @e: exit number
+ *
  * Return: 1 on success or exit in errors
  */
-int shell_process(char **grid, char **env, char *line, char **path_dir, int *exit_status)
+int shell_process(char **grid, char **env, char *line, char **path_dir, int *e)
 {
 	int status;
 	pid_t child;
@@ -33,7 +35,7 @@ int shell_process(char **grid, char **env, char *line, char **path_dir, int *exi
 	{
 		waitpid(child, &status, WUNTRACED);
 		if (WIFEXITED(status))
-			*exit_status = WEXITSTATUS(status);
+			*ex = WEXITSTATUS(status);
 	}
 	return (1);
 }
