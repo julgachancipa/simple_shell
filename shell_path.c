@@ -94,7 +94,7 @@ int shell_path(char **grid, char **path_dir, char **env, int *ex)
 		if (stat(full_file, &st) == 0)
 		{
 			new_grid = grid_cpy(full_file, grid);
-			path_exe(new_grid, env, exit_status);
+			path_exe(new_grid, env, ex);
 			free(full_file);
 			j = 0;
 			if (new_grid[j])
