@@ -7,7 +7,7 @@
  * @line: input line
  * Return: status
  */
-int shell_status(char **grid, char **path_dir, char **env, char *line)
+int shell_status(char **grid, char **path_dir, char **env, char *line, int *exit_status)
 {
 	int flag = 0;
 
@@ -19,8 +19,8 @@ int shell_status(char **grid, char **path_dir, char **env, char *line)
 	if (flag)
 		return (flag);
 	/*PATH commands*/
-	if ((grid[0][0] != '/') && (shell_path(grid, path_dir, env)))
+	if ((grid[0][0] != '/') && (shell_path(grid, path_dir, env, exit_status)))
 		return (1);
 	/*exe commands or no valid*/
-	return (shell_process(grid, env, line, path_dir));
+	return (shell_process(grid, env, line, path_dir, exit_status));
 }

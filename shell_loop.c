@@ -7,8 +7,15 @@
 void shell_loop(char **env)
 {
 	char *line, *delim, *path_con, **grid, **path_dir;
-	int status;
+	int status, e;
+	int *exit_status;
 
+	exit_status = malloc(sizeof(int));
+	if (!exit_status)
+	{
+		perror("lsh");
+		exit(EXIT_FAILURE);
+	}
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "$ ", 2);
 	/*get the path content*/
@@ -20,16 +27,19 @@ void shell_loop(char **env)
 	do {
 		line = shell_read(path_dir);
 		grid = shell_token(line, delim);
-		status = shell_status(grid, path_dir, env, line);
+		status = shell_status(grid, path_dir, env, line, exit_status);
 		free(line);
 		free(grid);
 		if (status == -1)
 		{
 			free(path_dir);
-			exit(EXIT_SUCCESS);
+			e = *exit_status;
+			free(exit_status);
+			exit(e);
 		}
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 	} while (status);
+	free(exit_status);
 	free(path_dir);
 }

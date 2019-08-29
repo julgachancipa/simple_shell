@@ -7,9 +7,9 @@
  * @path_dir: path dirs.
  * Return: 1 on success or exit in errors
  */
-int shell_process(char **grid, char **env, char *line, char **path_dir)
+int shell_process(char **grid, char **env, char *line, char **path_dir, int *exit_status)
 {
-	int status = 1;
+	int status;
 	pid_t child;
 
 	child = fork();
@@ -26,12 +26,14 @@ int shell_process(char **grid, char **env, char *line, char **path_dir)
 			free(line);
 			free(grid);
 			free(path_dir);
-			exit(EXIT_FAILURE);
+			exit(127);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, WUNTRACED);
+		if (WIFEXITED(status))
+			*exit_status = WEXITSTATUS(status);
 	}
 	return (1);
 }

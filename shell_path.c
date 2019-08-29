@@ -40,15 +40,16 @@ char **grid_cpy(char *full_file, char **grid)
  * @env: env. vars
  * Return: 1 on success or exit in errors
  */
-int path_exe(char **new_grid, char **env)
+int path_exe(char **new_grid, char **env, int *exit_status)
 {
-	int status = 1;
+	int status;
 	pid_t child;
 
 	child = fork();
 	if (child == -1)
 	{
 		perror("lsh");
+		exit(EXIT_FAILURE);
 	}
 	else if (child == 0)
 	{
@@ -61,6 +62,8 @@ int path_exe(char **new_grid, char **env)
 	else
 	{
 		waitpid(child, &status, WUNTRACED);
+		if (WIFEXITED(status))
+			*exit_status = WEXITSTATUS(status);
 	}
 	return (1);
 }
@@ -71,7 +74,7 @@ int path_exe(char **new_grid, char **env)
  * @env: env vars
  * Return: 1 success or 0 if not
  */
-int shell_path(char **grid, char **path_dir, char **env)
+int shell_path(char **grid, char **path_dir, char **env, int *exit_status)
 {
 	char *full_file;
 	char **new_grid;
@@ -88,7 +91,7 @@ int shell_path(char **grid, char **path_dir, char **env)
 		if (stat(full_file, &st) == 0)
 		{
 			new_grid = grid_cpy(full_file, grid);
-			path_exe(new_grid, env);
+			path_exe(new_grid, env, exit_status);
 			free(full_file);
 			j = 0;
 			if (new_grid[j])
